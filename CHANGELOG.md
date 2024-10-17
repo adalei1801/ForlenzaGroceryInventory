@@ -14,4 +14,13 @@
   - View the current inventory.
   - Search for items by name.
 
+## Verison 1.2
+- 2024-10-17
+- System changes to improve interface and work flow as requested by users
+- Features:
+  - System no longer crashs when sold out item is removed
+  - Quantities updates correctly
+  - Confirmation question for overwriting an item has been added
+  - Current inventory is now printed as the system iterates
+
 

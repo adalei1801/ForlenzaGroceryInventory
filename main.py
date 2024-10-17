@@ -8,10 +8,17 @@ def add_item(inventory, name, price, quantity):
     price (str): The price of the item
     quantity (str): The quantity of the item
     """
-    inventory[name] = {"price": price, "quantity": quantity}
-    print(f"{name} added to the inventory.")
+    if name in inventory:
+        overwrite = input("This item already exists, do you want to overwrite it? Yes or no? ")
+        if overwrite == "yes":
+            inventory[name] = {"price": price, "quantity": quantity}
+            print(f"{name} added to the inventory.")
 
-def remove_item(inventory, item_name):
+    # Ticket #3: Checks if item already exists and if the user wants to overwrite it, if so, the item is overwritten.
+
+            
+
+def remove_item(inventory, name):
     """
     Remove an item from the inventory.
     
@@ -19,10 +26,10 @@ def remove_item(inventory, item_name):
     inventory (dict): The current inventory
     item_name (str): The name of the item to remove
     """
-    del inventory[item_name]
-    print(f"{item_name} removed from the inventory.")
+    del inventory[name]
+    print(f"{name} removed from the inventory.")
 
-def update_quantity(inventory, item_name, new_quantity):
+def update_quantity(inventory, name, quantity):
     """
     Update the quantity of an item in the inventory.
     
@@ -31,8 +38,9 @@ def update_quantity(inventory, item_name, new_quantity):
     item_name (str): The name of the item to update
     new_quantity (str): The new quantity of the item
     """
-    inventory[item_name]["quantity"] == new_quantity
-    print(f"{item_name} quantity updated to {new_quantity}.")
+    inventory[name]["quantity"] = quantity
+    # Ticket #2: Changed double equal to single to assign new quantity
+    print(f"{name} quantity updated to {quantity}.")
 
 def display_inventory(inventory):
     """
@@ -48,6 +56,7 @@ def display_inventory(inventory):
         for name in inventory:
             item = inventory[name]
             print(f"{name}: Price: ${item['price']:.2f}, Quantity: {item['quantity']}")
+            # Ticket #1: Changing item to name fixes formatting issue and allows items to be removed smoothly
 
 # Initialize inventory with two example items
 inventory = {
@@ -56,6 +65,9 @@ inventory = {
 }
 
 while True:
+    print("Current Inventory:\n")
+    display_inventory(inventory)
+    # Ticket #4: Prints inventory at the start of every loop by calling the display inventory function 
     print("\n1. Add item\n2. Remove item\n3. Update quantity\n4. Display inventory\n5. Exit")
     choice = input("Enter your choice (1-5): ")
 
