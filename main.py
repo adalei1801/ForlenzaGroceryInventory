@@ -8,13 +8,9 @@ def add_item(inventory, name, price, quantity):
     price (str): The price of the item
     quantity (str): The quantity of the item
     """
-    if name in inventory:
-        overwrite = input("This item already exists, do you want to overwrite it? Yes or no? ")
-        if overwrite == "yes":
-            inventory[name] = {"price": price, "quantity": quantity}
-            print(f"{name} added to the inventory.")
 
-    # Ticket #3: Checks if item already exists and if the user wants to overwrite it, if so, the item is overwritten.
+    inventory[name] = {"price": price, "quantity": quantity}
+    print(f"{name} added to the inventory.")
 
             
 
@@ -73,7 +69,19 @@ while True:
 
     if choice == "1":
         name = input("Enter item name: ")
-        price = input("Enter item price: ")
+        if name in inventory:
+            overwrite = input("This item already exists, do you want to overwrite it? Yes or no? ")
+            if overwrite == "yes":
+                price = float(input("Enter item price: "))
+                quantity = int(input("Enter item quantity: "))
+                add_item(inventory, name, price, quantity)
+                continue
+            elif overwrite == "no":
+                continue
+        # Ticket #3: Checks if item already exists and if the user wants to overwrite it, if so, the item is overwritten.
+    
+        price = float(input("Enter item price: "))
+        # Ticket #3: Making input a float solves formatting issue
         quantity = int(input("Enter item quantity: "))
         add_item(inventory, name, price, quantity)
     elif choice == "2":
