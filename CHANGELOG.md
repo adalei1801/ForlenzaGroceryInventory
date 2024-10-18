@@ -23,4 +23,10 @@
   - Confirmation question for overwriting an item has been added
   - Current inventory is now printed as the system iterates
 
+Verison 1.3
+- 2024-10-18
+- Minor system changes to improve patches from previous verison
+- Features:
+  - Adding items overwrite fix moved and changed in case user wanted to overwrite
+  - Fixed formatting issue by changing price data type to float
 
