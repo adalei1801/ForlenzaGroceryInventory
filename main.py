@@ -36,7 +36,11 @@ def update_quantity(inventory, name, quantity):
     """
     inventory[name]["quantity"] = quantity
     # Ticket #2: Changed double equal to single to assign new quantity
-    print(f"{name} quantity updated to {quantity}.")
+    print(f"\n{name} quantity updated to {quantity}.")
+
+def update_price(inventory, name, price):
+    inventory[name]["price"] = price
+    print(f"\n{name} price changed to ${price:.2f}.")
 
 def display_inventory(inventory):
     """
@@ -48,11 +52,16 @@ def display_inventory(inventory):
     if len(inventory) == 0:
         print("Inventory is empty.")
     else:
-        print("Current Inventory:")
+        print("\nCurrent Inventory:")
         for name in inventory:
             item = inventory[name]
-            print(f"{name}: Price: ${item['price']:.2f}, Quantity: {item['quantity']}")
+
+            if item["quantity"] == "0":
+                 print(f"[SOLD OUT] {name}: Price: ${item['price']:.2f}, Quantity: {item['quantity']}")
+            else:
+                print(f"{name}: Price: ${item['price']:.2f}, Quantity: {item['quantity']}")
             # Ticket #1: Changing item to name fixes formatting issue and allows items to be removed smoothly
+
 
 # Initialize inventory with two example items
 inventory = {
@@ -61,11 +70,11 @@ inventory = {
 }
 
 while True:
-    print("Current Inventory:\n")
     display_inventory(inventory)
     # Ticket #4: Prints inventory at the start of every loop by calling the display inventory function 
-    print("\n1. Add item\n2. Remove item\n3. Update quantity\n4. Display inventory\n5. Exit")
-    choice = input("Enter your choice (1-5): ")
+    print("\nOptions: ")
+    print("1. Add item\n2. Remove item\n3. Update quantity\n4. Update price\n5. Exit")
+    choice = input("What would you like to do? Enter your choice (1-5): ")
 
     if choice == "1":
         name = input("Enter item name: ")
@@ -84,15 +93,42 @@ while True:
         # Ticket #3: Making input a float solves formatting issue
         quantity = int(input("Enter item quantity: "))
         add_item(inventory, name, price, quantity)
+
     elif choice == "2":
         name = input("Enter item name to remove: ")
+
+        while name not in inventory:
+            print("\nItem not in inventory, try again ")
+            name = input("Re-enter item name: ")
+
         remove_item(inventory, name)
+
     elif choice == "3":
         name = input("Enter item name to update: ")
+
+        while name not in inventory:
+            print("\nItem not in inventory, try again ")
+            name = input("Re-enter item name: ")
+            
         quantity = input("Enter new quantity: ")
+
+        if quantity == "0":
+            to_rev = input("This item's quantity is 0, would you like to remove it from the inventory? Yes or no? ")
+            if to_rev == "yes":
+                remove_item(inventory, name)
+        
         update_quantity(inventory, name, quantity)
+
     elif choice == "4":
-        display_inventory(inventory)
+        name = input("Enter name of item: ")
+
+        while name not in inventory:
+            print("\nItem not in inventory, try again ")
+            name = input("Re-enter item name: ")
+
+        price = float(input("Enter new price: "))
+        update_price(inventory, name, price)
+
     elif choice == "5":
         print("Exiting the program.")
         break

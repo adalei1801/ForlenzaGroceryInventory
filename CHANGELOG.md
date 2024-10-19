@@ -23,10 +23,24 @@
   - Confirmation question for overwriting an item has been added
   - Current inventory is now printed as the system iterates
 
-Verison 1.3
+## Verison 1.3
 - 2024-10-18
 - Minor system changes to improve patches from previous verison
 - Features:
   - Adding items overwrite fix moved and changed in case user wanted to overwrite
   - Fixed formatting issue by changing price data type to float
 
+## Verison 1.4
+- 2024-10-19
+- System changes to improve quality of life
+- Features:
+  - Display inventory option removed
+    - Replaced with "update price" function
+  - Price can now be updated
+    - To update price, press "4"
+  - If quantity is set to 0, user can remove it from the inventory
+    - If item not removed, it will be labeled as sold out
+  - All functions that require existing item name (remove item, update quantity, and update price) now check if item is in inventory
+    - If item is not in inventory, user will have to reinput item
+  - Formatting improvements
+    - Actions are spaced out
