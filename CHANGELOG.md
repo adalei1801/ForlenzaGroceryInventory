@@ -44,3 +44,10 @@
     - If item is not in inventory, user will have to reinput item
   - Formatting improvements
     - Actions are spaced out
+
+## Verison 1.5
+- 2024-10-20
+- Added new quality of life features
+- Features:
+  - Groups all update items into single item that leads to sub menu
+  - Added update name function
