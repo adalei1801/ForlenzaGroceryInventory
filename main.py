@@ -22,6 +22,9 @@ def remove_item(inventory, name):
     inventory (dict): The current inventory
     item_name (str): The name of the item to remove
     """
+
+
+
     del inventory[name]
     print(f"{name} removed from the inventory.")
 

@@ -45,9 +45,9 @@
   - Formatting improvements
     - Actions are spaced out
 
-## Verison 1.5
+## Verison 2.0
 - 2024-10-20
-- Added new quality of life features
+- Major interface changes
 - Features:
   - Groups all update items into single item that leads to sub menu
   - Added update name function
