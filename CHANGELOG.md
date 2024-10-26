@@ -45,7 +45,7 @@
   - Formatting improvements
     - Actions are spaced out
 
-## Verison 2.0
+## Verison 1.5
 - 2024-10-20
 - Major interface changes
 - Features:
