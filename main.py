@@ -87,6 +87,12 @@ def display_inventory(inventory):
             else:
                 print(f"{name}: Price: ${item['price']:.2f}, Quantity: {item['quantity']}")
             # Ticket #1: Changing item to name fixes formatting issue and allows items to be removed smoothly
+    print("\nInventory Notes:")
+    for note in notes:
+        print(note)
+
+    if notes == []:
+        print("No Notes")
 
 
 # Initialize inventory with two example items
@@ -95,11 +101,13 @@ inventory = {
     "banana": {"price": 0.75, "quantity": 150}
 }
 
+notes = []
+
 while True:
     display_inventory(inventory)
     # Ticket #4: Prints inventory at the start of every loop by calling the display inventory function 
     print("\nOptions: ")
-    print("1. Add item\n2. Remove item\n3. Update items\n4. Exit")
+    print("1. Add item\n2. Remove item\n3. Update items\n4. Update Notes\n5. Exit")
     choice = input("What would you like to do? Enter your choice (1-5): ")
 
 
@@ -177,8 +185,19 @@ while True:
             print("\nReturning to Home")
             continue
 
+
+    elif choice == "4":
+        print("Options:\n1.Add Note\n2. Remove Note\n3. Update Note")
+        note_choice = input("What does you want to do? ")
+
+        if note_choice == "1":
+            new_note = input("What is the new note you want to add? ")
+            notes.append(new_note)
+        elif note_choice == "2":
+            del_note = int(input("What note do you want removed? By number: "))
+            del notes[del_note]
     # Exit program
-    elif choice == "6":
+    elif choice == "5":
         print("Exiting the program.")
         break
     else:
