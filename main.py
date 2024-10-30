@@ -84,12 +84,14 @@ def display_inventory(inventory):
 
             if item["quantity"] == "0":
                  print(f"[SOLD OUT] {name}: Price: ${item['price']:.2f}, Quantity: {item['quantity']}")
+                 notes.append(f"{name} is sold out")
+
             else:
                 print(f"{name}: Price: ${item['price']:.2f}, Quantity: {item['quantity']}")
             # Ticket #1: Changing item to name fixes formatting issue and allows items to be removed smoothly
     print("\nInventory Notes:")
-    for note in notes:
-        print(note)
+    for x in notes:
+        print(f"{notes.index(x) + 1}.", x)
 
     if notes == []:
         print("No Notes")
@@ -187,7 +189,7 @@ while True:
 
 
     elif choice == "4":
-        print("Options:\n1.Add Note\n2. Remove Note\n3. Update Note")
+        print("Options:\n1. Add Note\n2. Remove Note\n3. Update Note")
         note_choice = input("What does you want to do? ")
 
         if note_choice == "1":
@@ -195,7 +197,13 @@ while True:
             notes.append(new_note)
         elif note_choice == "2":
             del_note = int(input("What note do you want removed? By number: "))
-            del notes[del_note]
+            del notes[del_note - 1]
+
+        elif note_choice == "3":
+            up_note = int(input("What note do you want to update? By number? "))
+            change_note = input("What do you want to change it to? ")
+            notes[up_note - 1] = change_note
+
     # Exit program
     elif choice == "5":
         print("Exiting the program.")

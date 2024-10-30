@@ -51,3 +51,10 @@
 - Features:
   - Groups all update items into single item that leads to sub menu
   - Added update name function
+
+## Verison 1.6
+- 2024-10-30
+- Quality of life improvements
+- Features:
+  - Added notes section for more information on inventory
+    - Notes can be add, removed, or changed
